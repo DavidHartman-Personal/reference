@@ -1,0 +1,142 @@
+{
+  "ipcMode": null,
+  "executionRoleArn": null,
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": null,
+      "environmentFiles": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/beta-mgmt-confluence",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "confluence"
+        }
+      },
+      "entryPoint": null,
+      "portMappings": [
+        {
+          "hostPort": 8090,
+          "protocol": "tcp",
+          "containerPort": 8090
+        }
+      ],
+      "command": null,
+      "linuxParameters": null,
+      "cpu": 0,
+      "environment": [
+        {
+          "name": "ATL_LICENSE_KEY",
+          "value": "AAABgg0ODAoPeNpNUV1v2jAUffevsLSXTROVkxIGSJbGnNBmJaQthYeqL3fuJVg4NrMdtvz7hQBa32yf6/N1PxXW0FIGGo8oY9PheJpEVKQvNGYxI3tsN+i8soZHI8a+sfHtbUSWTf0LXbld+w7jCSPmgAyLKFG/gAOtUb60zaGSGu2Nx2ijsiDa5A8Nk7uwGMKAflJYsAmg3hIFkqi8Zj9PSjX9mBjtKpVwPcre1aA0lyZo+1mv1cKTLCwv5G2Jvr8+x78jheCifmTyDf1PB3ja/v8I1o8fZVDa6tCgHR3s3z9qn+L1Iv7P5DMcPM43723bb6u0kmVvXHS6ZiABoz86KczG13M9qlWAVxAx7egPV795ylf5OkqWw6SZDSJuga7M/94L10FRnkIp07vTiFoCXsiHPZP/3uJ2CAenaUu5C/tAfuKRVkU2bPIZ4tr8uuSYpKil04devquuK1usMtBP6/QHdF9oQmj/dreplTYukYnFWh6USDZEXRz9nbO9Q82BrPWMCwCFBmgBG74d0Yl1ExGx8Xue8XNjhJkAhQyNWeVnNACTMHEhs5SKABgI02NJQ==X02iq"
+        },
+        {
+          "name": "ATL_PROXY_NAME",
+          "value": "atlassian.giantoak.com"
+        },
+        {
+          "name": "ATL_PROXY_PORT",
+          "value": "443"
+        },
+        {
+          "name": "ATL_TOMCAT_CONTEXTPATH",
+          "value": "/confluence"
+        },
+        {
+          "name": "ATL_TOMCAT_SCHEME",
+          "value": "https"
+        },
+        {
+          "name": "ATL_TOMCAT_SECURE",
+          "value": "true"
+        },
+        {
+          "name": "JVM_MAXIMUM_MEMORY",
+          "value": "8g"
+        },
+        {
+          "name": "JVM_MINIMUM_MEMORY",
+          "value": "8g"
+        }
+      ],
+      "resourceRequirements": null,
+      "ulimits": null,
+      "dnsServers": null,
+      "mountPoints": [
+        {
+          "readOnly": null,
+          "containerPath": "/var/atlassian/application-data/confluence",
+          "sourceVolume": "confluence-vol"
+        }
+      ],
+      "workingDirectory": null,
+      "secrets": null,
+      "dockerSecurityOptions": null,
+      "memory": 8096,
+      "memoryReservation": null,
+      "volumesFrom": [],
+      "stopTimeout": null,
+      "image": "atlassian/confluence-server",
+      "startTimeout": null,
+      "firelensConfiguration": null,
+      "dependsOn": null,
+      "disableNetworking": null,
+      "interactive": null,
+      "healthCheck": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "pseudoTerminal": null,
+      "user": null,
+      "readonlyRootFilesystem": null,
+      "dockerLabels": null,
+      "systemControls": null,
+      "privileged": null,
+      "name": "confluence"
+    }
+  ],
+  "placementConstraints": [],
+  "memory": null,
+  "taskRoleArn": null,
+  "compatibilities": [
+    "EC2"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:570404948330:task-definition/beta-mgmt-atlassian-confluence:23",
+  "family": "beta-mgmt-atlassian-confluence",
+  "requiresAttributes": [
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    }
+  ],
+  "pidMode": null,
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "networkMode": "bridge",
+  "cpu": null,
+  "revision": 23,
+  "status": "ACTIVE",
+  "inferenceAccelerators": null,
+  "proxyConfiguration": null,
+  "volumes": [
+    {
+      "fsxWindowsFileServerVolumeConfiguration": null,
+      "efsVolumeConfiguration": null,
+      "name": "confluence-vol",
+      "host": {
+        "sourcePath": "/efs/atlassian/confluence"
+      },
+      "dockerVolumeConfiguration": null
+    }
+  ]
+}

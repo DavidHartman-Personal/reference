@@ -1,0 +1,454 @@
+{
+  "version": 4,
+  "terraform_version": "0.12.6",
+  "serial": 12,
+  "lineage": "734707dd-89e2-452f-f830-639a71338517",
+  "outputs": {
+    "mgmt-iam-grafana-role-arn": {
+      "value": "arn:aws:iam::570404948330:role/beta-mgmt-grafana-ecs-task-role",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "grafana_ecs_task_assume_role",
+      "provider": "provider.aws",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "1687914614",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"AllowECSTasksToAssumeRole\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"ecs-tasks.amazonaws.com\"\n      }\n    }\n  ]\n}",
+            "override_json": null,
+            "policy_id": null,
+            "source_json": null,
+            "statement": [
+              {
+                "actions": [
+                  "sts:AssumeRole"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "ecs-tasks.amazonaws.com"
+                    ],
+                    "type": "Service"
+                  }
+                ],
+                "resources": [],
+                "sid": "AllowECSTasksToAssumeRole"
+              }
+            ],
+            "version": "2012-10-17"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "grafana_ecs_task_role",
+      "provider": "provider.aws",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "3070802645",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"AllowAccessToKMSForDecryptingSSMParameters\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"kms:Decrypt\",\n      \"Resource\": \"arn:aws:kms:us-east-1:570404948330:key/34c02a84-6f03-414f-b273-756a10a3c9bb\"\n    },\n    {\n      \"Sid\": \"AllowAccessToJumpCloudSecret\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"secretsmanager:GetSecretValue\",\n      \"Resource\": \"arn:aws:secretsmanager:us-east-1:570404948330:secret:jumpcloud-j3yIIO\"\n    },\n    {\n      \"Sid\": \"AllowAccessToGrafanaDbUrlSecret\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"secretsmanager:GetSecretValue\",\n      \"Resource\": \"arn:aws:secretsmanager:us-east-1:570404948330:secret:beta-mgmt-grafana-db-url-Bljs0q\"\n    },\n    {\n      \"Sid\": \"AllowAccessToAssumeGrafanaRole\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Resource\": [\n        \"arn:aws:iam::906382393616:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::371140244182:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::317840751741:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::270261420951:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::229975877100:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::168438113283:role/GrafanaDashboardRole\"\n      ]\n    }\n  ]\n}",
+            "override_json": null,
+            "policy_id": null,
+            "source_json": null,
+            "statement": [
+              {
+                "actions": [
+                  "kms:Decrypt"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:kms:us-east-1:570404948330:key/34c02a84-6f03-414f-b273-756a10a3c9bb"
+                ],
+                "sid": "AllowAccessToKMSForDecryptingSSMParameters"
+              },
+              {
+                "actions": [
+                  "secretsmanager:GetSecretValue"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:secretsmanager:us-east-1:570404948330:secret:jumpcloud-j3yIIO"
+                ],
+                "sid": "AllowAccessToJumpCloudSecret"
+              },
+              {
+                "actions": [
+                  "secretsmanager:GetSecretValue"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:secretsmanager:us-east-1:570404948330:secret:beta-mgmt-grafana-db-url-Bljs0q"
+                ],
+                "sid": "AllowAccessToGrafanaDbUrlSecret"
+              },
+              {
+                "actions": [
+                  "sts:AssumeRole"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [
+                  "arn:aws:iam::168438113283:role/GrafanaDashboardRole",
+                  "arn:aws:iam::229975877100:role/GrafanaDashboardRole",
+                  "arn:aws:iam::270261420951:role/GrafanaDashboardRole",
+                  "arn:aws:iam::317840751741:role/GrafanaDashboardRole",
+                  "arn:aws:iam::371140244182:role/GrafanaDashboardRole",
+                  "arn:aws:iam::906382393616:role/GrafanaDashboardRole"
+                ],
+                "sid": "AllowAccessToAssumeGrafanaRole"
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "depends_on": [
+            "data.terraform_remote_state.int01-iam",
+            "data.terraform_remote_state.int01-scoring-iam",
+            "data.terraform_remote_state.prod01-iam",
+            "data.terraform_remote_state.prod01-scoring-iam",
+            "data.terraform_remote_state.qa01-iam",
+            "data.terraform_remote_state.qa01-scoring-iam"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "terraform_remote_state",
+      "name": "int01-iam",
+      "provider": "provider.terraform",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backend": "s3",
+            "config": {
+              "value": {
+                "bucket": "beta-mgmt-terraform-remote-state",
+                "key": "beta-int01/iam/roles/cloudwatch/grafana.tfstate",
+                "region": "us-east-1"
+              },
+              "type": [
+                "object",
+                {
+                  "bucket": "string",
+                  "key": "string",
+                  "region": "string"
+                }
+              ]
+            },
+            "defaults": null,
+            "outputs": {
+              "value": {
+                "int01-grafana-role-arn": "arn:aws:iam::229975877100:role/GrafanaDashboardRole"
+              },
+              "type": [
+                "object",
+                {
+                  "int01-grafana-role-arn": "string"
+                }
+              ]
+            },
+            "workspace": "default"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "terraform_remote_state",
+      "name": "int01-scoring-iam",
+      "provider": "provider.terraform",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backend": "s3",
+            "config": {
+              "value": {
+                "bucket": "beta-mgmt-terraform-remote-state",
+                "key": "beta-int01-scoring/iam/roles/cloudwatch/grafana.tfstate",
+                "region": "us-east-1"
+              },
+              "type": [
+                "object",
+                {
+                  "bucket": "string",
+                  "key": "string",
+                  "region": "string"
+                }
+              ]
+            },
+            "defaults": null,
+            "outputs": {
+              "value": {
+                "int01-scoring-grafana-role-arn": "arn:aws:iam::168438113283:role/GrafanaDashboardRole"
+              },
+              "type": [
+                "object",
+                {
+                  "int01-scoring-grafana-role-arn": "string"
+                }
+              ]
+            },
+            "workspace": "default"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "terraform_remote_state",
+      "name": "prod01-iam",
+      "provider": "provider.terraform",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backend": "s3",
+            "config": {
+              "value": {
+                "bucket": "beta-mgmt-terraform-remote-state",
+                "key": "beta-prod01/iam/roles/cloudwatch/grafana.tfstate",
+                "region": "us-east-1"
+              },
+              "type": [
+                "object",
+                {
+                  "bucket": "string",
+                  "key": "string",
+                  "region": "string"
+                }
+              ]
+            },
+            "defaults": null,
+            "outputs": {
+              "value": {
+                "prod01-grafana-role-arn": "arn:aws:iam::371140244182:role/GrafanaDashboardRole"
+              },
+              "type": [
+                "object",
+                {
+                  "prod01-grafana-role-arn": "string"
+                }
+              ]
+            },
+            "workspace": "default"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "terraform_remote_state",
+      "name": "prod01-scoring-iam",
+      "provider": "provider.terraform",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backend": "s3",
+            "config": {
+              "value": {
+                "bucket": "beta-mgmt-terraform-remote-state",
+                "key": "beta-prod01-scoring/iam/roles/cloudwatch/grafana.tfstate",
+                "region": "us-east-1"
+              },
+              "type": [
+                "object",
+                {
+                  "bucket": "string",
+                  "key": "string",
+                  "region": "string"
+                }
+              ]
+            },
+            "defaults": null,
+            "outputs": {
+              "value": {
+                "prod01-scoring-grafana-role-arn": "arn:aws:iam::906382393616:role/GrafanaDashboardRole"
+              },
+              "type": [
+                "object",
+                {
+                  "prod01-scoring-grafana-role-arn": "string"
+                }
+              ]
+            },
+            "workspace": "default"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "terraform_remote_state",
+      "name": "qa01-iam",
+      "provider": "provider.terraform",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backend": "s3",
+            "config": {
+              "value": {
+                "bucket": "beta-mgmt-terraform-remote-state",
+                "key": "beta-qa01/iam/roles/cloudwatch/grafana.tfstate",
+                "region": "us-east-1"
+              },
+              "type": [
+                "object",
+                {
+                  "bucket": "string",
+                  "key": "string",
+                  "region": "string"
+                }
+              ]
+            },
+            "defaults": null,
+            "outputs": {
+              "value": {
+                "qa01-grafana-role-arn": "arn:aws:iam::270261420951:role/GrafanaDashboardRole"
+              },
+              "type": [
+                "object",
+                {
+                  "qa01-grafana-role-arn": "string"
+                }
+              ]
+            },
+            "workspace": "default"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "terraform_remote_state",
+      "name": "qa01-scoring-iam",
+      "provider": "provider.terraform",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "backend": "s3",
+            "config": {
+              "value": {
+                "bucket": "beta-mgmt-terraform-remote-state",
+                "key": "beta-qa01-scoring/iam/roles/cloudwatch/grafana.tfstate",
+                "region": "us-east-1"
+              },
+              "type": [
+                "object",
+                {
+                  "bucket": "string",
+                  "key": "string",
+                  "region": "string"
+                }
+              ]
+            },
+            "defaults": null,
+            "outputs": {
+              "value": {
+                "qa01-scoring-grafana-role-arn": "arn:aws:iam::317840751741:role/GrafanaDashboardRole"
+              },
+              "type": [
+                "object",
+                {
+                  "qa01-scoring-grafana-role-arn": "string"
+                }
+              ]
+            },
+            "workspace": "default"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "grafana_ecs_task",
+      "provider": "provider.aws",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::570404948330:role/beta-mgmt-grafana-ecs-task-role",
+            "assume_role_policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"AllowECSTasksToAssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ecs-tasks.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+            "create_date": "2019-09-30T19:56:00Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "beta-mgmt-grafana-ecs-task-role",
+            "max_session_duration": 3600,
+            "name": "beta-mgmt-grafana-ecs-task-role",
+            "name_prefix": null,
+            "path": "/",
+            "permissions_boundary": null,
+            "tags": {},
+            "unique_id": "AROAYJTWIZFVIXOBUL5V5"
+          },
+          "private": "bnVsbA==",
+          "depends_on": [
+            "data.aws_iam_policy_document.grafana_ecs_task_assume_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "grafana_ecs_task",
+      "provider": "provider.aws",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "beta-mgmt-grafana-ecs-task-role:beta-mgmt-grafana-ecs-task-policy",
+            "name": "beta-mgmt-grafana-ecs-task-policy",
+            "name_prefix": null,
+            "policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"AllowAccessToKMSForDecryptingSSMParameters\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"kms:Decrypt\",\n      \"Resource\": \"arn:aws:kms:us-east-1:570404948330:key/34c02a84-6f03-414f-b273-756a10a3c9bb\"\n    },\n    {\n      \"Sid\": \"AllowAccessToJumpCloudSecret\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"secretsmanager:GetSecretValue\",\n      \"Resource\": \"arn:aws:secretsmanager:us-east-1:570404948330:secret:jumpcloud-j3yIIO\"\n    },\n    {\n      \"Sid\": \"AllowAccessToGrafanaDbUrlSecret\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"secretsmanager:GetSecretValue\",\n      \"Resource\": \"arn:aws:secretsmanager:us-east-1:570404948330:secret:beta-mgmt-grafana-db-url-Bljs0q\"\n    },\n    {\n      \"Sid\": \"AllowAccessToAssumeGrafanaRole\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Resource\": [\n        \"arn:aws:iam::906382393616:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::371140244182:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::317840751741:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::270261420951:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::229975877100:role/GrafanaDashboardRole\",\n        \"arn:aws:iam::168438113283:role/GrafanaDashboardRole\"\n      ]\n    }\n  ]\n}",
+            "role": "beta-mgmt-grafana-ecs-task-role"
+          },
+          "private": "bnVsbA==",
+          "depends_on": [
+            "aws_iam_role.grafana_ecs_task",
+            "data.aws_iam_policy_document.grafana_ecs_task_role"
+          ]
+        }
+      ]
+    }
+  ]
+}

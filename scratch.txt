@@ -1,0 +1,62 @@
+pip3 install --trusted-host http://pypi.mgmt.beta --index-url http://pypi.mgmt.beta/simple/ xlsxwriter
+
+
+export SENZING_AWS_PROJECT=senzing-dave-test
+
+export POSTGRES_USERNAME=senzing
+export POSTGRES_PASSWORD=password
+
+export SENZING_ACCEPT_EULA="I_ACCEPT_THE_SENZING_EULA"
+export SENZING_AWS_PROJECT_DIR=~/${SENZING_AWS_PROJECT}
+mkdir ${SENZING_AWS_PROJECT_DIR}
+export AWS_DEFAULT_REGION=us-east-1
+
+export SENZING_AWS_ECS_CLUSTER=${SENZING_AWS_PROJECT}-cluster
+export SENZING_AWS_ECS_CLUSTER_CONFIG=${SENZING_AWS_PROJECT}-config-name
+export SENZING_AWS_ECS_PARAMS_FILE=${GIT_REPOSITORY_DIR}/resources/intermediate/ecs-params.yaml
+
+ecs-cli configure \
+   --cluster ${SENZING_AWS_ECS_CLUSTER} \
+   --config-name ${SENZING_AWS_ECS_CLUSTER_CONFIG} \
+   --default-launch-type FARGATE \
+   --region ${AWS_DEFAULT_REGION}
+
+cat ~/.ecs/config
+
+ecs-cli up \
+  --cluster-config ${SENZING_AWS_ECS_CLUSTER_CONFIG} \
+  --force \
+| tee ${SENZING_AWS_PROJECT_DIR}/ecs-cli-up.txt
+
+aws ecr get-login-password --profile giantoak-mgmt --region us-east-1 | docker login --username AWS 570404948330.dkr.ecr.us-east-1.amazonaws.com
+
+570404948330.dkr.ecr.us-east-1.amazonaws.com/gost/gost-ui:master_latest
+
+
+$(aws ecr get-login-password --region us-east-1)
+
+ "credsStore": "desktop.exe",
+
+570404948330.dkr.ecr.us-east-1.amazonaws.com/gost/gost-ui:master_latest
+
+
+Arturo Corro added you as a reviewer
+Problem: When creating a EKS cluster the creating IAM role is mapped to the system:master role within the role-based-access-control for that cluster. Therefore it needs to be used to update the aws-auth config-map in the kube-system namespace. The terraform box does not have connectivity to the API endpoint of the cluster to update the config-map.
+
+My proposed work-around is to create a separate IAM role within the account of the cluster that can be assume by the terraform role and used to create the cluster. This role can then be attached to an bastion-host instance or the policy can be updated to allow the role to be assumed by a Jenkins job for creating the proper roles, deployments, etc.
+
+Here is what that new iam role used by the aws.cluster-master-role provider would look like in INT01: https://bitbucket.giantoak.com/projects/GOST/repos/gost-crawl/commits/2ac968472a22b8f6ca02a31ca96135cca2f0c2fa#kubernetes/terraform/stacks/int01/iam.tf
+
+non default namespace creation with helpful role bindings and aws auth mappings to new namespace
+remove rbac, not managed by tf
+create a new iam role in order not map the terraform role to system:master
+providers can only be defined in root modules
+disable provider so it can be removed from its original provider
+reset resource name
+use seperate provider for cluster creation
+define a bare required provider in module
+
+https://bitbucket.giantoak.com/projects/INFRA/repos/infra-terraform/browse
+
+
+aws s3 ls s3://beta-mgmt-atlassian --recursive --human-readable --summarize
