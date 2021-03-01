@@ -23,7 +23,10 @@
 
 ## Cloning
 https cloning with username:
-`git clone https://username@github.com/username/repository.git`
+If github URL is at: https://github.com/mattcone/markdown-guide
+Then the following will clone that repo.
+
+`git clone https://DavidHartman-Personal@github.com/mattcone/markdown-guide`
 
 #### Go one step back in history
 ```shell

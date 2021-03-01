@@ -4,6 +4,16 @@ Features
 
 **[Read the complete tutorial](https://hackmd.io/c/tutorials)**
 
+##  Links
+
+To create a link, enclose the link text in brackets (e.g., [Duck Duck Go]) and then follow it immediately with the URL in parentheses (e.g., (https://duckduckgo.com)).
+
+My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+The rendered output looks like this:
+
+My favorite search engine is Duck Duck Go.
+
+
 Introduction
 ===
 <i class="fa fa-file-text"></i> **HackMD** is a realtime, multi-platform collaborative markdown knowledge base.
@@ -16,6 +26,7 @@ If you need instant help, please send us a [Facebook message](https://www.messen
 Workspace
 ===
 ## Modes
+**Desktop & Tablet**
 **Desktop & Tablet**
 
 <i class="fa fa-pencil fa-fw"></i> Edit: See only the editor.

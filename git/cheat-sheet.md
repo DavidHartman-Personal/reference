@@ -1,74 +1,56 @@
-Git and Git Flow Cheat Sheet [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://travis-ci.org/arslanbilal/git-cheat-sheet.svg?branch=master)](https://travis-ci.org/arslanbilal/git-cheat-sheet)
-===============
-<hr>
-<p align="center">
-    <img alt="Git" src="./Img/git-logo.png" height="190" width="455">
-</p>
-<hr>
-
-# Other Available Languages:
-
-1. [Arabic Git Cheat Sheet](https://github.com/arslanbilal/git-cheat-sheet/blob/master/other-sheets/git-cheat-sheet-ar.md)
-2. [Chinese Git Cheat Sheet](https://github.com/arslanbilal/git-cheat-sheet/blob/master/other-sheets/git-cheat-sheet-zh.md)
-3. [Hindi Git Cheat Sheet](https://github.com/arslanbilal/git-cheat-sheet/blob/master/other-sheets/git-cheat-sheet-hi.md)
-4. [Turkish Git Cheat Sheet](https://github.com/arslanbilal/git-cheat-sheet/blob/master/other-sheets/git-cheat-sheet-tr.md)
-5. [Spanish Git Cheat Sheet](https://github.com/arslanbilal/git-cheat-sheet/blob/master/other-sheets/git-cheat-sheet-es.md)
-6. [Greek Git Cheat Sheet](https://github.com/arslanbilal/git-cheat-sheet/blob/master/other-sheets/git-cheat-sheet-el.md)
-7. [Brazilian Portuguese Git Cheat Sheet](https://github.com/arslanbilal/git-cheat-sheet/blob/master/other-sheets/git-cheat-sheet-pt_BR.md)
+# Git and Git Flow Cheat Sheets
 
 Git cheat sheet saves you from learning all the commands by heart.
 
+[TOC]: #
+
+# Table of Contents
+- [Setup](#setup)
+- [Configuration Files](#configuration-files)
+- [Create](#create)
+- [Local Changes](#local-changes)
+- [Search](#search)
+- [Commit History](#commit-history)
+- [Move / Rename](#move--rename)
+- [Branches & Tags](#branches--tags)
+- [Update & Publish](#update--publish)
+- [Merge & Rebase](#merge--rebase)
+- [Undo](#undo)
+- [Git-Flow](#git-flow)
+  - [Index](#index)
+  - [Setup](#setup-1)
+  - [Getting Started](#getting-started)
+  - [Features](#features)
+  - [Make a Release](#make-a-release)
+  - [Hotfixes](#hotfixes)
+  - [Commands](#commands)
+  - [Git flow schema](#git-flow-schema)
+  - [TOC](#toc)
+
 Be free to contribute, update the grammar mistakes. You are also free to add your language file.
-
-<hr>
-
-Git Cheat Sheet English
-===============
-### Index
-* [Set Up](#setup)
-* [Configuration Files](#configuration-files)
-* [Create](#create)
-* [Local Changes](#local-changes)
-* [Search](#search)
-* [Commit History](#commit-history)
-* [Branches & Tags](#branches--tags)
-* [Update & Publish](#update--publish)
-* [Merge & Rebase](#merge--rebase)
-* [Undo](#undo)
-* [Git Flow](#git-flow)
-
-
-<hr>
 
 ## Setup
 
-##### Show current configuration:
-```
-$ git config --list
-```
-##### Show repository configuration:
-```
-$ git config --local --list
+##### Show current configuration and location:
+
+Shows all applicable git configurations and the location where they are defined/set.
+```bash
+git config --list --show-origin
 ```
 
 ##### Show global configuration:
-```
-$ git config --global --list
-```
-
-##### Show system configuration:
-```
-$ git config --system --list
+```bash
+git config --global --list
 ```
 
 ##### Set a name that is identifiable for credit when review version history:
-```
-$ git config --global user.name “[firstname lastname]”
+```bash
+git config --global user.name DavidHartman-Personal
 ```
 
 ##### Set an email address that will be associated with each history marker:
-```
-$ git config --global user.email “[valid-email]”
+```bash
+git config --global user.email david.j.hartman@gmail.com
 ```
 
 ##### Set automatic command line coloring for Git for easy reviewing:
@@ -754,3 +736,16 @@ git flow hotfix finish VERSION
     <img alt="Git" src="Img/git-flow-commands-without-flow.png">
 </p>
 <hr>
+
+### TOC
+* [Set Up](#setup)
+* [Configuration Files](#configuration-files)
+* [Create](#create)
+* [Local Changes](#local-changes)
+* [Search](#search)
+* [Commit History](#commit-history)
+* [Branches & Tags](#branches--tags)
+* [Update & Publish](#update--publish)
+* [Merge & Rebase](#merge--rebase)
+* [Undo](#undo)
+* [Git Flow](#git-flow)
