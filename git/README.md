@@ -29,8 +29,7 @@ https cloning with username:
 
 	git log --stat
 
-##create branch (git branch [name]) go to it (git checkout [name]) at the same time:
-
+## create branch (git branch name) go to it (git checkout name) at the same time:
 	git checkout -b [name]
 
 ##show last commit on each branch:
