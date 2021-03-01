@@ -1,25 +1,279 @@
 # Git/github Reference/Resources
 
-[TOC]
+[TOC levels=2]: # "### Table of contents"
+
+### Table of contents
+- [cloning](#cloning)
+- [list all the files that were added to the project, but not to the repo:](#list-all-the-files-that-were-added-to-the-project-but-not-to-the-repo)
+- [add some color to all the git output:](#add-some-color-to-all-the-git-output)
+- [choose which particular changes to stage:](#choose-which-particular-changes-to-stage)
+- [see only changes that are in stage mode (ready to be commited):](#see-only-changes-that-are-in-stage-mode-ready-to-be-commited)
+- [see what was changed by commits + number of changes per file:](#see-what-was-changed-by-commits--number-of-changes-per-file)
+- [create branch (git branch name) go to it (git checkout name) at the same time:](#create-branch-git-branch-name-go-to-it-git-checkout-name-at-the-same-time)
+- [show last commit on each branch:](#show-last-commit-on-each-branch)
+- [show commits/history by branches in ascii gui:](#show-commitshistory-by-branches-in-ascii-gui)
+- [show what is in one branch, but not in another:](#show-what-is-in-one-branch-but-not-in-another)
+- [show who changed the line + where it traveled to this file from:](#show-who-changed-the-line--where-it-traveled-to-this-file-from)
+- [alias to display one liner history/log changes (put it into ~/.gitconfig):](#alias-to-display-one-liner-historylog-changes-put-it-into-gitconfig)
+- [find the bad commit in a range of commits:](#find-the-bad-commit-in-a-range-of-commits)
+- [reset to a particular point in time:](#reset-to-a-particular-point-in-time)
+- [merge 'this' particular commit (SHA1):](#merge-this-particular-commit-sha1)
+- [Reference/Resources](#referenceresources)
+
 
 ## Cloning
-
 https cloning with username:
 `git clone https://username@github.com/username/repository.git`
 
-#git cheat sheet
+#### Go one step back in history
+```shell
+git checkout @~1
+```
 
-##list all the files that were added to the project, but not to the repo:
+#### Show commit changes
+```shell
+git show <commit-sha>
+```
 
-	git ls-files --exclude-standard --others
+#### Push master branch to origin
+```shell
+git push origin master
+```
 
-##add some color to all the git output:
+#### List all branches
+```shell
+git branch -a
+```
 
-	git config --global color.ui true
+#### List remote branches
+```shell
+git branch -r
+```
 
-##choose which particular changes to stage:
+#### Sync list of remote branches
+```shell
+git remote update
+```
 
-	git add -p
+#### Checkout remote branch into local repository
+```shell
+git checkout -t -b <local-name> <remote-name>
+```
+
+#### Create a branch
+```shell
+git checkout -b <name>
+```
+
+#### Push local branch to remote
+```shell
+git push origin <remote-name>
+```
+
+#### Merge two branches
+```shell
+git checkout <target>
+git merge <source>
+```
+
+#### Merge two branches with squash
+```shell
+git checkout <target>
+git merge --squash <source>
+```
+
+#### See what branches are merged into master
+```shell
+git branch -r --merged master
+```
+
+#### Ignore files globally
+https://help.github.com/articles/ignoring-files
+
+#### pull changes from the server + rebase (equivalent of git stash save && git pull && git stash pop && git push) + push
+```shell
+git pull --rebase && git push
+```
+
+#### Set up git inet server
+```shell
+git daemon --base-path /home/git --verbose
+```
+
+#### Add remote origin
+```shell
+git remote add origin <url>
+```
+
+#### Fix 'branch not tracking anything'
+```shell
+git config --add branch.master.remote origin
+git config --add branch.master.merge refs/heads/master
+```
+
+#### Extract patch from a given file
+```shell
+git diff --patch-with-raw rev1 rev2 patched_file > diff_file
+```
+
+#### Diff with paging
+```shell
+GIT_PAGER='less -r' git dc
+```
+
+#### Apply a patch
+```shell
+git apply diff_file
+```
+
+#### Publish branch
+```shell
+git push origin <name>
+```
+
+#### Delete remote branch
+```shell
+git push origin :<name>
+```
+
+#### Cherry-pick a commit
+```shell
+git cherry-pick -n <sha>
+```
+
+#### Revert commit
+```shell
+git revert -n <sha>
+```
+
+#### Reset HEAD to n commits back
+```shell
+git reset --hard HEAD~<n>
+```
+
+#### Squash N last commits
+```shell
+git rebase --interactive --autosquash HEAD~N
+```
+
+#### search git log commits
+```shell
+git log -S “free text”
+```
+
+#### remove file from history (can use 'git rm -rf…' to remove files recursively)
+```shell
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch <path to file>' --prune-empty --tag-name-filter cat -- --all
+git push origin master --force
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+```
+
+#### Prune history
+```shell
+git gc
+git gc --aggressive
+git prune
+```
+
+#### Checkout GitHub PR
+```shell
+git fetch origin pull/1234/head:local-branch-name
+```
+
+#### Convert long sha to short one
+```shell
+git rev-parse --short <sha>
+```
+
+#### My aliases
+```shell
+git config --global alias.aa "add --all"
+git config --global alias.ai "add --interactive"
+git config --global alias.b "branch"
+git config --global alias.ba "branch -a"
+git config --global alias.c "commit"
+git config --global alias.ca "commit --amend"
+git config --global alias.cf '!sh -c "git commit --fixup $@"'
+git config --global alias.co "checkout"
+git config --global alias.col '!sh -c "git checkout -b $@"'
+git config --global alias.cor '!sh -c "git checkout --track -b $@ origin/$@"'
+git config --global alias.cp "cherry-pick"
+git config --global alias.cpa "cherry-pick --abort"
+git config --global alias.cpc "cherry-pick --continue"
+git config --global alias.cs '!sh -c "git commit --squash $@"'
+git config --global alias.d "diff"
+git config --global alias.dc "diff --cached"
+git config --global alias.ds "diff --stat"
+git config --global alias.dsc "diff --stat --cached"
+git config --global alias.fpr '!sh -c "git fetch origin pull/$@/head:$@-pr"'
+git config --global alias.l "log"
+git config --global alias.lf "log --follow"
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all"
+git config --global alias.m "merge"
+git config --global alias.mb "merge-base master HEAD"
+git config --global alias.ms "merge --squash"
+git config --global alias.pl "pull"
+git config --global alias.ps "push"
+git config --global alias.psc '!sh -c "git push --set-upstream origin \$(git rev-parse --abbrev-ref HEAD)"'
+git config --global alias.psd '!sh -c "git push origin :\$(git rev-parse --abbrev-ref HEAD)"'
+git config --global alias.psf "push --force-with-lease"
+git config --global alias.r "reset HEAD"
+git config --global alias.rb "rebase"
+git config --global alias.rba "rebase --abort"
+git config --global alias.rbc "rebase --continue"
+git config --global alias.rbi "rebase --interactive --autosquash"
+git config --global alias.rbm "rebase --interactive --autosquash origin/master"
+git config --global alias.rh "reset --hard"
+git config --global alias.rs "reset --soft"
+git config --global alias.s "status"
+git config --global alias.sh "show"
+git config --global alias.shs "show --stat"
+git config --global alias.st "stash"
+```
+
+#### Global git ignore
+```shell
+git config --global core.excludesfile ~/.gitignore
+```
+
+#### Global username & email
+```shell
+git config --global user.name "Jakub Pawlowicz"
+git config --global user.email '<email>'
+```
+
+#### Local username & email
+```shell
+git config user.name "Jakub Pawlowicz"
+git config user.email '<email>'
+```
+
+####
+```shell
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+```
+
+#### Branch name and merge status in bash prompt (should go to local or global bash profile)
+```shell
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+export PS1='\u@\h \[\033[0;36m\]\w \[\033[0;32m\]$(parse_git_branch)\[\033[0m\]$ '
+```
+
+##  add some color to all the git output:
+`git config --global color.ui true`
+
+## choose which particular changes to stage:
+`git add -p`
 
 ##see only changes that are in stage mode (ready to be commited):
 
@@ -81,6 +335,7 @@ https cloning with username:
 
 ## Reference/Resources
 
-[Git related cheat sheets](https://training.github.com/downloads/github-git-cheat-sheet.pdf)
-[Personal Github repositories](https://github.com/DavidHartman-Personal?tab=repositories)
-[Personal git Confluence Space](https://davidhartman.atlassian.net/wiki/spaces/GKB/overview)
+- [Git related cheat sheets](https://training.github.com/downloads/github-git-cheat-sheet.pdf)
+- [Personal Github repositories](https://github.com/DavidHartman-Personal?tab=repositories)
+- [Personal git Confluence Space](https://davidhartman.atlassian.net/wiki/spaces/GKB/overview)
+
