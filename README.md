@@ -20,4 +20,4 @@ cd <local repo location (e.g. cd ~)>;
 git clone https://username@github.com/DavidHartman-Personal/reference.git
 ```
 
-`cp -r /mnt/c/Users/david/AppData/Roaming/JetBrains/PyCharm2020.3/scratches/ reference/`
+`cp -r reference/ /mnt/c/Users/david/AppData/Roaming/JetBrains/PyCharm2020.3/scratches/`
