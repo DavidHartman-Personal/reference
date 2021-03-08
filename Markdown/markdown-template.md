@@ -10,7 +10,7 @@ The below line will generate a table of contents for levels 1 and 2 at a level 2
 ## Table of contents
 - [Font types/formatting](#font-typesformatting)
 - [Collapsible markdown](#collapsible-markdown)
-- [Hint/Info](#hintinfo)
+- [Hint/Info/Alerts](#hintinfoalerts)
 - [Table](#table)
 
 Bullet list of items
@@ -37,6 +37,8 @@ Checklist items
 
 ## Collapsible markdown
 
+***WARNING***: The below collapsible sections may not display correctly in PyCharm Viewer, but they do work on github
+
 A collapsible section containing markdown.  Note that this does not display correctly with Markdown Enhanced previewer
 in PyCharm.  A black line is needed after the summary closing tag.  A blank line is needed after the closing details tag as well.
 
@@ -51,7 +53,8 @@ in PyCharm.  A black line is needed after the summary closing tag.  A blank line
    4. Sub Item
 </details>
 
-The below is a collapsible section with a code block in it:
+The below is a collapsible section with a code block in it
+
 
 <details>
 <summary>Summary - Collapsed Markdown Block</summary>
@@ -70,9 +73,16 @@ public class Order
 </p>
 </details>
 
-## Hint/Info
+## Hint/Info/Alerts
 
 :bulb: **Hint:** An example for capturing a hint or important idea
+
+> **Warning**: A quoted/indented warning block with Warning bolded.
+
+> :warning: Warning in block quote format using the `:warning:` icon
+
+| **Warning**: Warning note done as a table |
+|:------------------------------------------|
 
 ## Table
 
