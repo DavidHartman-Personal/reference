@@ -117,9 +117,6 @@ This editor provides full auto-complete hints in markdown.
 - Externals: type `{}` to show hint.
 - Images: type `!` to show hint.
 
-## Title:
-This will take the first **level 1 header** as the note title.
-
 ## Tags:
 Using tags as follows, the specified tags will show in your note list.
 ###### tags: `features` `cool` `updated`
