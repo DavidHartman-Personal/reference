@@ -9,6 +9,7 @@ The below line will generate a table of contents for levels 1 and 2 at a level 2
 
 ## Table of contents
 - [Font types/formatting](#font-typesformatting)
+- [Collapsible markdown](#collapsible-markdown)
 - [Hint/Info](#hintinfo)
 - [Table](#table)
 
@@ -33,6 +34,46 @@ Checklist items
 - Sub~script~
 - ~~Crossed~~
 - ==Highlight==
+
+## Collapsible markdown
+A collapsible section containing markdown
+<details>
+<summary>Click to expand!</summary>
+## Heading
+1. A numbered
+2. list
+   3. With some
+   4. Sub bullets
+
+</details>
+
+
+### A collapsible section with markdown
+<details>
+<summary>Click to expand!</summary>
+## Heading
+  1. A numbered
+  2. list
+     * With some
+     * Sub bullets
+</details>
+
+<details>
+<summary>Summary - Collapsed Markdown Block</summary>
+<p>
+
+```c#
+public class Order
+{
+    public int OrderId { get; set; }
+    public int CustomerId { get; set; }
+
+    public List<int> Products { get; set; }
+}
+```
+
+</p>
+</details>
 
 ## Hint/Info
 
