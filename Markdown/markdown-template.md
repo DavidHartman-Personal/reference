@@ -10,7 +10,6 @@ The below line will generate a table of contents for levels 1 and 2 at a level 2
 ## Table of contents
 - [Font types/formatting](#font-typesformatting)
 - [Collapsible markdown](#collapsible-markdown)
-- [Heading](#heading)
 - [Hint/Info](#hintinfo)
 - [Table](#table)
 
@@ -37,28 +36,22 @@ Checklist items
 - ==Highlight==
 
 ## Collapsible markdown
-A collapsible section containing markdown
+
+A collapsible section containing markdown.  Note that this does not display correctly with Markdown Enhanced previewer
+in PyCharm.  A black line is needed after the summary closing tag.  A blank line is needed after the closing details tag as well.
+
 <details>
 <summary>Click to expand!</summary>
 
-## Heading
-1. A numbered
-2. list
-   3. With some
-   4. Sub bullets
+### Collapsible Section with Markdown
 
+1. The heading above this numbered list as well as the numbered list will be hidden.
+2. Second Item
+   3. Sub item
+   4. Sub Item
 </details>
 
-
-### A collapsible section with markdown
-<details>
-<summary>Click to expand!</summary>
-## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
+The below is a collapsible section with a code block in it:
 
 <details>
 <summary>Summary - Collapsed Markdown Block</summary>
