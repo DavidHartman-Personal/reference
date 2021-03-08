@@ -1,6 +1,4 @@
-Features
-===
-**[English version](/features)**
+# Features
 
 **[Read the complete tutorial](https://hackmd.io/c/tutorials)**
 
@@ -593,16 +591,23 @@ Autoconverted link https://github.com/nodeca/pica
 
 
 ### Images
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-Like links, Images also have a footnote style syntax
-![Alt text][id]
+Embedding image with no text, mouse over or external link:
+
+`![Minion](markdown.png)`: ![Minion](markdown.png)
+
+Embedding image with mouse over text, mouse over or external link:
+
+`![Stormtroopocat](markdown.png "Markdown Icon")`: ![Stormtroopocat](markdown.png "Markdown Icon")
+
+Like links, Images also have a footnote style syntax:
+
+`![Alt text][id]`: ![Alt text][id]
+
 With a reference later in the document defining the URL location:
 
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+`[id]: markdown.png  "Markdown Icon"`:
 
-![Minion](https://octodex.github.com/images/minion.png =200x200)
-Show the image with given size
+[id]: markdown.png  "Markdown Icon"
 
 ### Footnotes
 

@@ -1,8 +1,7 @@
 ---
 title: Tables
 description: Shows examples of Markdown tables
-tags: markdown, tables
-----------------------
+---
 # Tables
 To add a table, use three or more hyphens (`---`) to create each column's header, and use pipes (`|`) to separate each column. You can optionally add pipes on either end of the table.
 
@@ -84,7 +83,8 @@ The rendered output looks like this:
 
 ### Formatting Text in Tables
 
-You can format the text within tables. For example, you can add [links](/basic-syntax/#links), [code](/basic-syntax/#code-1) (words or phrases in backticks (`` ` ``) only, not [code blocks](/basic-syntax/#code-blocks)), and [emphasis](/basic-syntax/#emphasis).
+You can format the text within tables. For example, you can add `[links](/basic-syntax/#links)`, `[code](/basic-syntax/#code-1)`
+(words or phrases in backticks (`` ` ``) only, not `[code blocks](/basic-syntax/#code-blocks)`), and `[emphasis](/basic-syntax/#emphasis)`.
 
 You can't add headings, blockquotes, lists, horizontal rules, images, or HTML tags.
 
