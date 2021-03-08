@@ -10,6 +10,7 @@ The below line will generate a table of contents for levels 1 and 2 at a level 2
 ## Table of contents
 - [Font types/formatting](#font-typesformatting)
 - [Collapsible markdown](#collapsible-markdown)
+- [Heading](#heading)
 - [Hint/Info](#hintinfo)
 - [Table](#table)
 
@@ -39,6 +40,7 @@ Checklist items
 A collapsible section containing markdown
 <details>
 <summary>Click to expand!</summary>
+
 ## Heading
 1. A numbered
 2. list
