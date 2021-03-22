@@ -43,21 +43,55 @@ A collapsible section containing markdown.  Note that this does not display corr
 in PyCharm.  A black line is needed after the summary closing tag.  A blank line is needed after the closing details tag as well.
 
 <details>
-<summary>Click to expand!</summary>
+<summary>Summary - Collapsible section with Markdown formatting</summary>
 
-### Collapsible Section with Markdown
+### Collapsible Section with Markdown Formatting
 
 1. The heading above this numbered list as well as the numbered list will be hidden.
-2. Second Item
+2. Note a blank line is needed after the closing summary tag.
+3. Second Item
    3. Sub item
    4. Sub Item
 </details>
 
+
+```markdown
+<details>
+<summary>Summary - Collapsible section with Markdown formatting</summary>
+
+### Collapsible Section with Markdown Formatting
+
+1. The heading above this numbered list as well as the numbered list will be hidden.
+2. Note a blank line is needed after the closing summary tag.
+3. Second Item
+   3. Sub item
+   4. Sub Item
+</details>
+
+```
+
 The below is a collapsible section with a code block in it
 
-
 <details>
-<summary>Summary - Collapsed Markdown Block</summary>
+<summary>Summary - Collapsed Section with Code Block</summary>
+<p>
+
+```c#
+public class Order
+{
+    public int OrderId { get; set; }
+    public int CustomerId { get; set; }
+
+    public List<int> Products { get; set; }
+}
+```
+
+</p>
+</details>
+
+```markdown
+<details>
+<summary>Summary - Collapsed Section with Code Block</summary>
 <p>
 
 ```c#
@@ -79,10 +113,18 @@ public class Order
 
 > **Warning**: A quoted/indented warning block with Warning bolded.
 
-> :warning: Warning in block quote format using the `:warning:` icon
+> :warning: ***Warning*** in block quote format using the `:warning:` icon
 
-| **Warning**: Warning note done as a table |
-|:------------------------------------------|
+| **Warning** : Warning note done as a table |
+|:-------------------------------------------|
+
+<table>
+  <thead>
+    <tr><th align="left" bgcolor="#dc143c">
+    <strong>Warning</strong>: Warning done as an html table. </th></tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
 ## Table
 

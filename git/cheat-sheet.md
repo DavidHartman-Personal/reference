@@ -6,6 +6,7 @@ Git cheat sheet saves you from learning all the commands by heart.
 
 # Table of Contents
 - [Setup](#setup)
+  - [gitconfig](#gitconfig)
 - [Configuration Files](#configuration-files)
 - [Create](#create)
 - [Local Changes](#local-changes)
@@ -30,6 +31,20 @@ Git cheat sheet saves you from learning all the commands by heart.
 Be free to contribute, update the grammar mistakes. You are also free to add your language file.
 
 ## Setup
+
+### gitconfig
+
+The .gitconfig file contains configurations used by git and can be set at the global or individual repository level.
+Below is the .gitconfig I use for the global configurations.
+The `autocrlf = false` setting ensures that git does not convert LF's to CRLF's when running git within WSL on Windows.
+
+```
+[user]
+        email = david.j.hartman@gmail.com
+        name = DavidHartman-Personal
+[core]
+        autocrlf = false
+```
 
 ##### Show current configuration and location:
 
